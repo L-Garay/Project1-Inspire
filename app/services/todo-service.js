@@ -8,14 +8,19 @@ const todoApi = axios.create({
 });
 
 class TodoService {
+  constructor() {
+    this.getTodos();
+  }
   async getTodos() {
-    console.log("Getting the Todo List");
-    let res = await todoApi.get();
+    let res = await todoApi.get("");
+    store.commit("todos", new Todo(res.data));
     //TODO Handle this response from the server
   }
 
   async addTodoAsync(todo) {
     let res = await todoApi.post("", todo);
+    console.log("LOOKING FOR THIS", res);
+
     //TODO Handle this response from the server (hint: what data comes back, do you want this?)
   }
 

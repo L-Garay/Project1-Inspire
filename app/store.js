@@ -1,15 +1,20 @@
 import Weather from "./models/weather.js";
 import Image from "./models/image.js";
+import Quote from "./models/quote.js";
+import Todo from "./models/todo.js";
 
 let _state = {
   /**@type {Weather} */
   // @ts-ignore
   weather: {}, //temporary fake data
-  /**@type {any[]}*/
+  /**@type {Todo[]}*/
   todos: [], //TODO change 'any' to your todo model
   /**@type {Image} */
   // @ts-ignore
-  images: {}
+  images: {},
+  /**@type {Quote} */
+  // @ts-ignore
+  quotes: {}
 };
 
 /** Collection of listeners to be called based on keyed state changes

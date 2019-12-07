@@ -7,7 +7,6 @@ async function _drawImage() {
   try {
     let image = store.State.images.url;
     document.body.style.backgroundImage = `url('${image}')`;
-    console.log(image);
   } catch (e) {
     console.error(e);
   }

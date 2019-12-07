@@ -25,6 +25,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
@@ -40,11 +44,23 @@
     <main class="container-fluid">
       <div class="row">
         <div class="col-4">
-          <div>
-            A Todo List
-            <div id="todo-error"></div>
-            <form onsubmit=""></form>
-            <div id="todos"></div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title list-title">Todo List</h4>
+              <form onsubmit="app.todoController.addTodo(event)">
+                <div class="form-group">
+                  <label for="description">New Task</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    placeholder="Enter Task"
+                  />
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </form>
+              <dl class="ml-3 mt-2" id="todos"></dl>
+            </div>
           </div>
         </div>
         <div class="col-8">
@@ -54,10 +70,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <div class="text-center" id="quote">
-            The Quote
-          </div>
+        <div class="col-6 offset-3">
+          <div class="text-center" id="quote"></div>
         </div>
       </div>
     </main>
