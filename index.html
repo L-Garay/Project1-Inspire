@@ -29,10 +29,14 @@
       href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
-  <body id="bg-image">
+  <body id="bg-image" onload="startTime()">
     <header class="container-fluid">
       <div class="row">
         <div
@@ -44,29 +48,32 @@
     <main class="container-fluid">
       <div class="row">
         <div class="col-4">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title list-title">Todo List</h4>
+          <div class="card task-card">
+            <div class="card-body todo-body">
+              <h6 class="card-title todo-title">Todo List</h6>
               <form onsubmit="app.todoController.addTodo(event)">
                 <div class="form-group">
-                  <label for="description">New Task</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="description"
-                    placeholder="Enter Task"
-                  />
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="description"
+                      placeholder="Enter Task"
+                    />
+                    <div class="input-group-append">
+                      <button type="submit" class="btn submit-btn">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn">Submit</button>
               </form>
-              <dl class="ml-3 mt-2" id="todos"></dl>
+              <dl class="ml-3 mt-2 task-list" id="todos"></dl>
             </div>
           </div>
         </div>
         <div class="col-8">
-          <div id="clock-greeting">
-            Put clock and greeting here
-          </div>
+          <div id="txt" class="time"></div>
         </div>
       </div>
       <div class="row">
@@ -84,6 +91,24 @@
         </div>
       </div>
     </footer>
+    <script>
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+      }
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        } // add zero in front of numbers < 10
+        return i;
+      }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <script type="module" src="app/main.js"></script>
   </body>

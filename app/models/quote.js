@@ -7,7 +7,7 @@ export default class Quote {
 
   get quoteTemplate() {
     return `
-    <div class="card">
+    <div class="card quote-card">
       <div class="card-body">
         <blockquote class="blockquote mb-0">
           <p class="quote-body">${this.body}</p>

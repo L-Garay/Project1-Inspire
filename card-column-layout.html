@@ -1,0 +1,33 @@
+<div class="card-columns">
+  <div class="card task-card">
+    <div class="card-body todo-body">
+      <h6 class="card-title todo-title">Todo List</h6>
+      <form onsubmit="app.todoController.addTodo(event)">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              placeholder="Enter Task"
+            />
+            <div class="input-group-append">
+              <button type="submit" class="btn submit-btn">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <dl class="ml-3 mt-2 task-list" id="todos"></dl>
+    </div>
+  </div>
+  <div class="card">
+    <div id="clock-greeting">
+      Put clock and greeting here
+    </div>
+  </div>
+  <div class="card p-3 text-right">
+    <div class="text-center" id="quote"></div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import store from "../store.js";
 //TODO Create the render function
 function _drawTodos() {
   let template = "";
+
   let todos = store.State.todos;
   todos.forEach(t => (template += t.taskTemplate));
   document.getElementById("todos").innerHTML = template;
@@ -21,7 +22,6 @@ export default class TodoController {
     let formData = e.target;
     let newTodo = {
       description: formData.description.value
-      //TODO build the todo object from the data that comes into this method
     };
     try {
       await TodoService.addTodoAsync(newTodo);
@@ -32,7 +32,7 @@ export default class TodoController {
   }
 
   //NOTE This method will pass an Id to your service for the TODO that will need to be toggled
-  async toggleTodoStatus(todoId) {
+  async toggleStatus(todoId) {
     try {
       await TodoService.toggleTodoStatusAsync(todoId);
     } catch (error) {

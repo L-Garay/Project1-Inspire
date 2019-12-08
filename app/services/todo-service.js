@@ -13,31 +13,44 @@ class TodoService {
   }
   async getTodos() {
     let res = await todoApi.get("");
-    store.commit("todos", new Todo(res.data));
-    //TODO Handle this response from the server
+    store.commit(
+      "todos",
+      res.data.data.map(t => new Todo(t))
+    );
   }
 
   async addTodoAsync(todo) {
-    let res = await todoApi.post("", todo);
-    console.log("LOOKING FOR THIS", res);
-
-    //TODO Handle this response from the server (hint: what data comes back, do you want this?)
+    let res = await todoApi.post("", todo).then(res => {
+      this.getTodos();
+    });
   }
 
   async toggleTodoStatusAsync(todoId) {
-    let todo = store.State.todos.find(todo => todo._id == todoId);
+    let todoToUpdate = store.State.todos.find(t => t.id == todoId);
+    console.log("Todo BEFORE THE BOOL SWITCH", todoToUpdate);
+
+    if (todoToUpdate.completed == true) {
+      todoToUpdate.completed = !todoToUpdate.completed;
+    } else if (todoToUpdate.completed == false) {
+      todoToUpdate.completed = !todoToUpdate.completed;
+    }
+    console.log("Todo AFTER THE BOOL SWITCH", todoToUpdate);
+
     //TODO Make sure that you found a todo,
     //		and if you did find one
     //		change its completed status to whatever it is not (ex: false => true or true => false)
 
-    let res = await todoApi.put(todoId, todo);
+    let res = await todoApi.put(todoId, todoToUpdate).then(res => {
+      this.getTodos();
+    });
     //TODO do you care about this data? or should you go get something else?
   }
 
   async removeTodoAsync(todoId) {
-    //TODO Work through this one on your own
-    //		what is the request type
-    //		once the response comes back, what do you need to insure happens?
+    let todoToRemove = store.State.todos.find(t => t.id == todoId);
+    todoApi.delete(`/${todoId}`, todoToRemove).then(res => {
+      this.getTodos();
+    });
   }
 }
 

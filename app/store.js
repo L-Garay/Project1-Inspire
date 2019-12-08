@@ -8,7 +8,7 @@ let _state = {
   // @ts-ignore
   weather: {}, //temporary fake data
   /**@type {Todo[]}*/
-  todos: [], //TODO change 'any' to your todo model
+  todos: [],
   /**@type {Image} */
   // @ts-ignore
   images: {},
