@@ -11,6 +11,7 @@ class TodoService {
   constructor() {
     this.getTodos();
   }
+
   async getTodos() {
     let res = await todoApi.get("");
     store.commit(
@@ -23,6 +24,9 @@ class TodoService {
     let res = await todoApi.post("", todo).then(res => {
       this.getTodos();
     });
+    // debugger;
+    // store.State.count += 1;
+    // console.log("COUNT", store.State.count);
   }
 
   async toggleTodoStatusAsync(todoId) {
@@ -51,6 +55,8 @@ class TodoService {
     todoApi.delete(`/${todoId}`, todoToRemove).then(res => {
       this.getTodos();
     });
+    // store.State.count -= 1;
+    // console.log("COUNT", store.State.count);
   }
 }
 

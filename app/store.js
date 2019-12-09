@@ -4,6 +4,7 @@ import Quote from "./models/quote.js";
 import Todo from "./models/todo.js";
 
 let _state = {
+  count: 0,
   /**@type {Weather} */
   // @ts-ignore
   weather: {}, //temporary fake data
@@ -21,6 +22,7 @@ let _state = {
  * @type {{[x:string]: function[]}}
  */
 let _listeners = {
+  count: [],
   weather: [],
   todos: [],
   quotes: [],

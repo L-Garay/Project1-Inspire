@@ -1,7 +1,6 @@
 import TodoService from "../services/todo-service.js";
 import store from "../store.js";
-
-//TODO Create the render function
+let countElem = document.getElementById("count");
 function _drawTodos() {
   let template = "";
 
@@ -9,12 +8,17 @@ function _drawTodos() {
   todos.forEach(t => (template += t.taskTemplate));
   document.getElementById("todos").innerHTML = template;
 }
+function _drawCount() {
+  countElem.innerText = store.State.todos.length.toString();
+}
 
 export default class TodoController {
   constructor() {
     //TODO Remember to register your subscribers
     TodoService.getTodos();
+    _drawCount();
     store.subscribe("todos", _drawTodos);
+    store.subscribe("todos", _drawCount);
   }
 
   async addTodo(e) {
