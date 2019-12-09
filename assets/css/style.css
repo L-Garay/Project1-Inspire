@@ -148,7 +148,12 @@ html {
 }
 
 .task-card {
+  background: none;
+  border: 2px solid rgb(255, 255, 255);
+}
+.task-card:hover {
   background: white;
+  border: 2px solid black;
 }
 .todo-title {
   margin-bottom: 3pt;
